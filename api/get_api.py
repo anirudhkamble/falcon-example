@@ -1,8 +1,9 @@
-import falcon
 import json
 
+import falcon
 
-class FalconAppGet(object):
+
+class GetApi(object):
 
     @staticmethod
     def on_get(request, response):
@@ -11,4 +12,3 @@ class FalconAppGet(object):
         response.content_type = 'application/json'
         response.data = json.dumps(message)
         return response
-

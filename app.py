@@ -3,13 +3,12 @@
 import falcon
 from falcon_multipart.middleware import MultipartMiddleware
 
-from api.firstGet import FalconAppGet
-from api.firstPost import FalconAppPost
+from api.get_api import GetApi
+from api.post_api import PostApi
 
 
 # initialize the falcon application
 app = application = falcon.API(middleware=[MultipartMiddleware()])
 
-app.add_route('/example/get/first', FalconAppGet)
-app.add_route('/example/post/first', FalconAppPost)
-
+app.add_route('/example/get/first', GetApi)
+app.add_route('/example/post/first', PostApi)
