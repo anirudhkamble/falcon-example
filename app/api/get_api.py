@@ -1,7 +1,3 @@
-import json
-
-import falcon
-
 from app.response import response
 
 
@@ -9,9 +5,9 @@ class GetApi(object):
 
     @staticmethod
     def on_get(req, resp):
-        message = {'message': 'First Falon App..'}
-        
-        if isinstance(message, dict):
-        	response.ok(resp, message)
+        data = req.get_param('data')
+
+        if data:
+        	response.ok(resp, data)
         else:
-        	response.err(resp, response.INTERNAL_ERROR, {'message': 'something went wrong!'})
+        	response.err(resp, response.INTERNAL_ERROR, {'message': 'No Request data'})

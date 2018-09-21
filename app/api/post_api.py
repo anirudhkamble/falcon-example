@@ -4,10 +4,10 @@ from app.response import response
 class PostApi(object):
 
     @staticmethod
-    def on_post(request, response):
-        postData = ast.literal_eval(request.stream.read())
+    def on_post(req, resp):
+        data = req.get_param('data')
 
-        if postData:
-        	response.ok(resp, postData)
+        if data:
+        	response.ok(resp, data)
         else:
-        	response.err(resp, response.BAD_REQUEST, {'message': 'No data found'})
+        	response.err(resp, response.BAD_REQUEST, {'message': 'No postdata found'})
