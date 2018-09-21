@@ -7,7 +7,7 @@ class PostApi(object):
     def on_post(req, resp):
         data = req.get_param('data')
 
-        if data:
-        	response.ok(resp, data)
-        else:
-        	response.err(resp, response.BAD_REQUEST, {'message': 'No postdata found'})
+		if data:
+			response.ok(resp, data)
+		else:
+			response.err(resp, response.BAD_REQUEST, {'message': 'No postdata found'})
