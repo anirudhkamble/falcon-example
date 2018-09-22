@@ -2,13 +2,13 @@
 import falcon
 from falcon_multipart.middleware import MultipartMiddleware
 
-from app.middleware import middleware as _middlewares
+from app.middlewares import validator as _validator
 from routes import routes as _routes
 
 
 # initialize the falcon application
 
-middlewares = [MultipartMiddleware(), _middlewares.DataValidator()]
+middlewares = [MultipartMiddleware(), _validator.DataValidator()]
 
 app = application = falcon.API(middleware=middlewares)
 
