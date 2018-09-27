@@ -24,6 +24,9 @@ class DBInterface():
     def commit(self):
         self.conn.commit()
 
+    def rollback(self):
+        self.conn.rollback()
+
     def close(self):
         self.conn.close()
 
@@ -33,7 +36,6 @@ class DBInterface():
             self.transaction()
             yield self.cursor()
         except Exception as e:
-            raise e
+            self.rollback()
         finally:
-            self.commit()
-            self.close()
+            self.cursor().close()
